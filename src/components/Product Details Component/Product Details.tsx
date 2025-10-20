@@ -40,8 +40,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../Redux/reduxStore";
 import {
   addProductToCart,
-  productsCartLength,
-  updateQuantity
+  productsCartLength
 } from "../../Redux/productDetailsSlice";
 import {
   addProductToFavorite,
@@ -206,13 +205,13 @@ export default function Product_Details() {
           })
         );
 
-        dispatch(
-          updateQuantity({
-            productId: productDetails[Number(id) - 1].id,
-            imageId: productDetails[Number(id) - 1].images[indexImageNumber].id,
-            quantity: selectQuantity
-          })
-        );
+        // dispatch(
+        //   updateQuantity({
+        //     productId: productDetails[Number(id) - 1].id,
+        //     imageId: productDetails[Number(id) - 1].images[indexImageNumber].id,
+        //     quantity: selectQuantity
+        //   })
+        // );
 
         dispatch(productsCartLength());
       }, 3000);

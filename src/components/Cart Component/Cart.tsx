@@ -405,7 +405,10 @@ export default function Cart() {
                               updateQuantity({
                                 productId: product.id,
                                 quantity: Number(event.target.value),
-                                imageId: product.idImg
+                                imageId: product.idImg,
+                                height: product.height ?? 0,
+                                width: product.width ?? 0,
+                                size: product.size ?? ""
                               })
                             );
                           }}

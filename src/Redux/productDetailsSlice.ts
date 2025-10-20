@@ -31,6 +31,9 @@ interface selectedQuantityProps {
   productId: number;
   imageId: number;
   quantity: number;
+  height: number;
+  width: number;
+  size: string;
 }
 
 const productsCartSlice = createSlice({
@@ -94,9 +97,15 @@ const productsCartSlice = createSlice({
     },
 
     updateQuantity: (state, action: { payload: selectedQuantityProps }) => {
-      const { productId, quantity, imageId } = action.payload;
+      const { productId, quantity, imageId, height, width, size } =
+        action.payload;
       const productIsFounded = state.productsCart.find(
-        (product) => product.id === productId && product.idImg === imageId
+        (product) =>
+          product.id === productId &&
+          product.idImg === imageId &&
+          product.height === height &&
+          product.width === width &&
+          product.size === size
       );
       if (productIsFounded) {
         productIsFounded.quantity = quantity;
