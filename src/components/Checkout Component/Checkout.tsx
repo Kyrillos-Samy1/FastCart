@@ -18,7 +18,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { addShippingAddress } from "../../Redux/checkoutSlice";
 import { Stripe, StripeElements } from "@stripe/stripe-js";
-import {
+import { 
   clearCart,
   clearProductsCartLength
 } from "../../Redux/productDetailsSlice";
@@ -189,6 +189,7 @@ export default function Checkout() {
       console.log("[error]", error);
     } else {
       const orderData = {
+
         line_items: productsCart,
         customer: {
           name: `${currentUser.firstName} ${currentUser.lastName}`,

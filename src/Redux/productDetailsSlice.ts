@@ -42,51 +42,68 @@ const productsCartSlice = createSlice({
     isProductAdded: false,
     isSize_QuantityAdded: false,
     selectedQuantity: [] as selectedQuantityProps[],
-    totalPrice: 0,
+    totalPrice: 0
   },
 
   reducers: {
     addProductToCart: (state, action: { payload: productCartItemProps }) => {
-      const {id, idImg, color, size, quantity, width, height} = action.payload;
+      const { id, idImg, color, size, quantity, width, height } =
+        action.payload;
       const existingProduct = state.productsCart.find(
-        (product) => (product.id === id && product.idImg === idImg)
+        (product) =>
+          product.id === id &&
+          product.idImg === idImg &&
+          product.height === height &&
+          product.width === width &&
+          product.size === size
       );
+
       if (existingProduct) {
-        existingProduct.quantity = quantity;
-        existingProduct.size = size;
-        existingProduct.height = height;
-        existingProduct.width = width;
+        existingProduct.quantity += quantity;
+        // existingProduct.size = size;
+        // existingProduct.height = height;
+        // existingProduct.width = width;
       } else {
         state.productsCart.push(action.payload);
       }
 
       const detectProductAdded = state.productsCart.some(
-        (product) => (product.id === id && product.color === color && product.idImg === idImg && product.size === size && product.width === width && product.height === height));
+        (product) =>
+          product.id === id &&
+          product.color === color &&
+          product.idImg === idImg &&
+          product.size === size &&
+          product.width === width &&
+          product.height === height
+      );
 
-        if (detectProductAdded) {
-          state.isProductAdded = true;
-        } else {
-          state.isProductAdded = false;
-        }
+      if (detectProductAdded) {
+        state.isProductAdded = true;
+      } else {
+        state.isProductAdded = false;
+      }
 
-      sessionStorage.setItem("productsCart", JSON.stringify(state.productsCart));
+      sessionStorage.setItem(
+        "productsCart",
+        JSON.stringify(state.productsCart)
+      );
     },
 
     updateIsSize_QuantityAdded: (state) => {
-
-        state.isSize_QuantityAdded = !state.isSize_QuantityAdded;
-      
+      state.isSize_QuantityAdded = !state.isSize_QuantityAdded;
     },
 
-    updateQuantity: (state, action: {payload: selectedQuantityProps}) => {
+    updateQuantity: (state, action: { payload: selectedQuantityProps }) => {
       const { productId, quantity, imageId } = action.payload;
-      const productIsFounded = state.productsCart.find(product => product.id === productId && product.idImg === imageId);
+      const productIsFounded = state.productsCart.find(
+        (product) => product.id === productId && product.idImg === imageId
+      );
       if (productIsFounded) {
         productIsFounded.quantity = quantity;
       }
     },
 
-    pushTotalPrice: (state, action: {payload: number}) => {
+    pushTotalPrice: (state, action: { payload: number }) => {
       state.totalPrice = action.payload;
     },
 
@@ -97,15 +114,28 @@ const productsCartSlice = createSlice({
       sessionStorage.removeItem("productsCart");
     },
 
-    removeProductFromCart: (state, action: { payload: removeProductFromCartProps }) => {
+    removeProductFromCart: (
+      state,
+      action: { payload: removeProductFromCartProps }
+    ) => {
       const { id, color, size, width, height } = action.payload;
       state.productsCart = state.productsCart.filter(
-        product => !((product.id === id && product.color === color && product.size === size && product.width === width && product.height === height))
+        (product) =>
+          !(
+            product.id === id &&
+            product.color === color &&
+            product.size === size &&
+            product.width === width &&
+            product.height === height
+          )
       );
 
       state.isProductAdded = false;
 
-      sessionStorage.setItem("productsCart", JSON.stringify(state.productsCart));
+      sessionStorage.setItem(
+        "productsCart",
+        JSON.stringify(state.productsCart)
+      );
     },
 
     productsCartLength: (state) => {
@@ -134,13 +164,12 @@ const productsCartSlice = createSlice({
       if (savedCart) {
         state.productsCart = JSON.parse(savedCart);
       }
-    },
-
-  },
+    }
+  }
 });
 
-export const { 
-  addProductToCart, 
+export const {
+  addProductToCart,
   clearCart,
   productsCartLength,
   reduceNumberOfProductsLength,
