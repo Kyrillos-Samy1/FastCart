@@ -172,13 +172,14 @@ export default function Checkout() {
     if (!stripe || !elements) {
       return;
     }
+    
+    if (isPaid) return;
 
     if (!isCardComplete) {
       toastWarning("Please complete your card details.");
       return;
     }
 
-    if (isPaid) return;
 
     setIsButtonLoading(true);
 
