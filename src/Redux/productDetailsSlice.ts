@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface productCartItemProps {
   id: number;
+  variantKey?: string;
   idImg: number;
   sizeID: number;
   indexImageNumber: number;
@@ -28,13 +29,8 @@ interface removeProductFromCartProps {
 }
 
 interface selectedQuantityProps {
-  productId: number;
-  imageId: number;
+  variantKey?: string;
   quantity: number;
-  color: string;
-  height: number;
-  width: number;
-  size: string;
 }
 
 const productsCartSlice = createSlice({
@@ -98,17 +94,12 @@ const productsCartSlice = createSlice({
     },
 
     updateQuantity: (state, action: { payload: selectedQuantityProps }) => {
-      const { productId, quantity, color, height, width, size, imageId } =
-        action.payload;
+      const { quantity, variantKey } = action.payload;
       const productIsFounded = state.productsCart.find(
-        (product) =>
-          product.id === productId &&
-          product.color === color &&
-          product?.idImg === imageId &&
-          product?.size === size &&
-          product?.width === width &&
-          product?.height === height
+        (product) => product.variantKey === variantKey
       );
+
+      console.log(action.payload);
 
       if (productIsFounded) {
         productIsFounded.quantity = quantity;
