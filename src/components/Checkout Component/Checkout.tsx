@@ -18,7 +18,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { addShippingAddress } from "../../Redux/checkoutSlice";
 import { Stripe, StripeElements } from "@stripe/stripe-js";
-import { 
+import {
   clearCart,
   clearProductsCartLength
 } from "../../Redux/productDetailsSlice";
@@ -90,6 +90,8 @@ export default function Checkout() {
   const [isConfirmation, setIsConfirmation] = useState<boolean>(false);
 
   const [isCardComplete, setIsCardComplete] = useState<boolean>(false);
+
+  const [isPaid, setIsPaid] = useState<boolean>(false);
 
   const { cartId } = useParams<{ cartId: string }>();
 
@@ -176,6 +178,8 @@ export default function Checkout() {
       return;
     }
 
+    if (isPaid) return;
+
     setIsButtonLoading(true);
 
     const cardElement = elements.getElement(CardElement);
@@ -189,7 +193,6 @@ export default function Checkout() {
       console.log("[error]", error);
     } else {
       const orderData = {
-
         line_items: productsCart,
         customer: {
           name: `${currentUser.firstName} ${currentUser.lastName}`,
@@ -592,9 +595,14 @@ export default function Checkout() {
                       <ElementsConsumer>
                         {({ elements, stripe }) => (
                           <form
-                            onSubmit={(e) =>
-                              handleMakePayment(e, elements, stripe)
-                            }>
+                            onSubmit={(e) => {
+                              handleMakePayment(e, elements, stripe);
+                              if (isCardComplete) {
+                                setIsPaid(true);
+                              } else {
+                                setIsPaid(false);
+                              }
+                            }}>
                             <div className="flex flex-col justify-between w-full">
                               <div
                                 className={`flex flex-col overflow-y-auto pb-5 md:pr-5 gap-y-4 md:h-[180px] xs:h-[350px] w-full`}>
@@ -633,31 +641,45 @@ export default function Checkout() {
                                 className="w-full"
                               />
 
-                              <div className="flex justify-between items-center mt-8 w-full">
+                              <div
+                                className={`flex justify-between items-center mt-8 w-full`}>
                                 <button
                                   type="button"
                                   title="Back"
                                   onClick={() => {
                                     setActiveProcessing(0);
-                                    setShowSecondForm(false);
+                                    if (isPaid) {
+                                      setShowSecondForm(true);
+                                    } else {
+                                      setShowSecondForm(false);
+                                    }
                                     scrollToTop();
                                   }}>
                                   <Button
                                     type="button"
                                     title="Back"
                                     classNameArrows="rotate-180"
-                                    className="flex flex-row-reverse gap-2 pl-0"
+                                    className={`${
+                                      isPaid &&
+                                      "cursor-not-allowed bg-[#2E8157]"
+                                    } flex flex-row-reverse gap-2 pl-0`}
                                   />
                                 </button>
 
                                 <button
                                   type="submit"
                                   title="Pay"
-                                  onClick={() => scrollToTop()}>
+                                  onClick={() => {
+                                    scrollToTop();
+                                  }}>
                                   <Button
                                     type="submit"
                                     title={`${
                                       isButtonLoading ? "load" : "Pay"
+                                    }`}
+                                    className={`${
+                                      isPaid &&
+                                      "cursor-not-allowed bg-[#2E8157]"
                                     }`}
                                   />
                                 </button>
