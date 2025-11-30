@@ -183,7 +183,7 @@ export default function Product({ product }: ProductProps) {
             )}
           </button>
 
-          <div className="absolute z-20 top-2 -left-32 group-hover/heart:left-3 transition-all duration-500 ease-in-out flex justify-center items-center rounded-lg w-fit h-fit">
+          <div className="absolute z-20 top-2 -left-36 group-hover/heart:left-3 transition-all duration-500 ease-in-out flex justify-center items-center rounded-lg w-fit h-fit">
             <h4
               className={`font-bold text-lg tracking-wide px-2 py-1 rounded-lg bg-gray-100/85
               ${
