@@ -505,14 +505,16 @@ export default function Checkout() {
                               onChange={shippingAddressFormik.handleChange}
                               onBlur={shippingAddressFormik.handleBlur}
                               className={`peer w-full mt-7 h-10 px-2 bg-gray-50 outline-none remove-number-arrows
-                        ${
-                          shippingAddressFormik.touched[
-                            fieldNameMapper[input]
-                          ] &&
-                          shippingAddressFormik.errors[fieldNameMapper[input]]
-                            ? "placeholder-red-500 placeholder-shown:text-sm"
-                            : "placeholder-gray-400"
-                        }`}
+                              ${
+                                shippingAddressFormik.touched[
+                                  fieldNameMapper[input]
+                                ] &&
+                                shippingAddressFormik.errors[
+                                  fieldNameMapper[input]
+                                ]
+                                  ? "placeholder-red-500 placeholder-shown:text-sm"
+                                  : "placeholder-gray-400"
+                              }`}
                               placeholder={
                                 shippingAddressFormik.touched[
                                   fieldNameMapper[input]
@@ -529,20 +531,20 @@ export default function Checkout() {
 
                             <h6
                               className={`pointer-events-none absolute left-2 text-sm transition-all duration-200
-                        ${
-                          shippingAddressFormik.values[
-                            fieldNameMapper[input]
-                          ] ||
-                          (shippingAddressFormik.touched[
-                            fieldNameMapper[input]
-                          ] &&
-                            shippingAddressFormik.errors[
-                              fieldNameMapper[input]
-                            ])
-                            ? "top-[10px] text-sm text-[var(--primary-color)]"
-                            : "peer-placeholder-shown:top-[35px] peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400"
-                        }
-                        peer-focus:top-[10px] peer-focus:text-sm peer-focus:text-[var(--primary-color)]`}>
+                            ${
+                              shippingAddressFormik.values[
+                                fieldNameMapper[input]
+                              ] ||
+                              (shippingAddressFormik.touched[
+                                fieldNameMapper[input]
+                              ] &&
+                                shippingAddressFormik.errors[
+                                  fieldNameMapper[input]
+                                ])
+                                ? "top-[10px] text-sm text-[var(--primary-color)]"
+                                : "peer-placeholder-shown:top-[35px] peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400"
+                            }
+                            peer-focus:top-[10px] peer-focus:text-sm peer-focus:text-[var(--primary-color)]`}>
                               {input} *
                             </h6>
 
