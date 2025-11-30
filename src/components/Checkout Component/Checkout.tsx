@@ -599,8 +599,6 @@ export default function Checkout() {
                               handleMakePayment(e, elements, stripe);
                               if (isCardComplete) {
                                 setIsPaid(true);
-                              } else {
-                                setIsPaid(false);
                               }
                             }}>
                             <div className="flex flex-col justify-between w-full">
