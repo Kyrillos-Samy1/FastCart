@@ -22,6 +22,7 @@ import {
 
 interface productsCartProps {
   id: number;
+  variantKey?: string;
   idImg: number;
   sizeID?: number;
   indexImageNumber: number;
@@ -401,15 +402,19 @@ export default function Cart() {
                           id="quantity"
                           value={product.quantity}
                           onChange={(event) => {
+                            console.log(
+                              product.id,
+                              Number(event.target.value),
+                              product.idImg,
+                              product.color,
+                              product.height ?? 0,
+                              product.width ?? 0,
+                              product.size ?? ""
+                            );
                             dispatch(
                               updateQuantity({
-                                productId: product.id,
-                                quantity: Number(event.target.value),
-                                imageId: product.idImg,
-                                color: product.color,
-                                height: product.height ?? 0,
-                                width: product.width ?? 0,
-                                size: product.size ?? ""
+                                variantKey: product?.variantKey,
+                                quantity: Number(event.target.value)
                               })
                             );
                           }}
