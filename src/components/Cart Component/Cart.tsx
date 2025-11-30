@@ -406,6 +406,7 @@ export default function Cart() {
                                 productId: product.id,
                                 quantity: Number(event.target.value),
                                 imageId: product.idImg,
+                                color: product.color,
                                 height: product.height ?? 0,
                                 width: product.width ?? 0,
                                 size: product.size ?? ""
