@@ -264,6 +264,10 @@ export default function Product_Details() {
     setQuantityPerImage("");
     setColorName("");
     setIndexImageNumber(0);
+    setIndexSize(0);
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0);
+    }
   }, [id]);
 
   //! Get the current location object from React Router
