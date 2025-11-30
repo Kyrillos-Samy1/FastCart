@@ -81,6 +81,8 @@ export default function Product_Details() {
 
   const [indexSize, setIndexSize] = useState<number>(0);
 
+  const variantKeyForUpdateQuantity = String(Math.floor(Math.random() * 1e12));
+
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const swiperRef = useRef<SwiperRef | null>(null);
   const sizeGuideRef = useRef<HTMLDivElement | null>(null);
@@ -180,6 +182,7 @@ export default function Product_Details() {
         dispatch(
           addProductToCart({
             id: Number(id),
+            variantKey: variantKeyForUpdateQuantity,
             idImg: productDetails[Number(id) - 1].images[indexImageNumber].id,
             sizeID: isSizeSelected,
             indexImageNumber: indexImageNumber,
