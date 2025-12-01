@@ -973,7 +973,7 @@ export const productDetails: productDetailsProps[] = [
       }
     ],
     video: optimizeImage(
-      "https://res.cloudinary.com/dkby0jbe3/image/upload/v1748680018/ilxx8xv7strcjyi3065j.png"
+      "https://res.cloudinary.com/dkby0jbe3/video/upload/v1748684001/tbvzqeiygvbnhjhbq0zb.mp4"
     )
   },
   {
