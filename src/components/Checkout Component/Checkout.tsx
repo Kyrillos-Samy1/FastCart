@@ -93,6 +93,11 @@ export default function Checkout() {
 
   const [isPaid, setIsPaid] = useState<boolean>(false);
 
+  const [cardInfo, setCardInfo] = useState<{
+    cardType: string;
+    cartLast4Digits: string;
+  }>({ cardType: "", cartLast4Digits: "" });
+
   const { cartId } = useParams<{ cartId: string }>();
 
   const dispatch = useDispatch<AppDispatch>();
@@ -155,6 +160,10 @@ export default function Checkout() {
     })
   });
 
+  const capitalize = (str: string) => str && str.length > 0
+  ? str[0].toUpperCase() + str.substring(1)
+  : str;
+
   const stripePromise = loadStripe(
     "pk_test_51RRI0C4PwXfdxZqq4PuhxLNlJmb8Rd78Ew3MO5BfGmJRIT94iOOxrJqJPBGoEvkkDAqZb5v8rizkqn8EwIb1P5QM00cP3YL1yA"
   );
@@ -206,10 +215,19 @@ export default function Checkout() {
         payment_method: {
           gateway: "stripe",
           stripe: {
-            payment_method_id: paymentMethod.id
+            payment_method_id: paymentMethod.id,
+            card: {
+              brand: paymentMethod.card!.brand,
+              last4: paymentMethod.card!.last4
+            }
           }
         }
       };
+
+      setCardInfo({
+        cardType: paymentMethod.card!.brand,
+        cartLast4Digits: paymentMethod.card!.last4
+      });
 
       dispatch(clearProductsCartLength());
       dispatch(clearCart());
@@ -243,7 +261,13 @@ export default function Checkout() {
     doc.text(`Name: ${currentUser.firstName} ${currentUser.lastName}`, 20, 40);
     doc.text(`Email: ${currentUser.email}`, 20, 50);
     doc.text(`Total Paid: $${total_Price.toFixed(2)}`, 20, 60);
-    doc.text(`Card Info: Visa (**** **** **** 4242)`, 20, 70);
+    doc.text(
+      `Card Info: ${capitalize(cardInfo.cardType)} (**** **** **** ${
+        cardInfo.cartLast4Digits
+      })`,
+      20,
+      70
+    );
     doc.text(`Transaction Date: ${dateTime}`, 20, 80);
 
     doc.setFontSize(10);
@@ -314,7 +338,8 @@ export default function Checkout() {
                 <strong>Total:</strong> ${total_Price.toFixed(2)}
               </p>
               <p>
-                <strong>Card:</strong> Visa (**** **** **** 4242)
+                <strong>Card:</strong> {capitalize(cardInfo.cardType)} (**** **** ****{" "}
+                {cardInfo.cartLast4Digits})
               </p>
             </div>
 
@@ -618,7 +643,40 @@ export default function Checkout() {
 
                                     <div className="flex items-center gap-4 text-gray-600">
                                       <h4 className="text-gray-600 text-base mt-1">
-                                        Quantity: {pC.quantity}
+                                        Qty: {pC.quantity}
+                                      </h4>
+                                      <h4 className="text-gray-600 text-base mt-1">
+                                        {pC.categoryName === "Electronics" &&
+                                        (pC.subCategory === "Mobile" ||
+                                          pC.subCategory === "Flash Disk")
+                                          ? "Storage:"
+                                          : pC?.categoryName ===
+                                              "Home Appliances" &&
+                                            (pC?.subCategory ===
+                                              "Washing Machine" ||
+                                              pC?.subCategory ===
+                                                "Espresso Maker")
+                                          ? "Capacity:"
+                                          : "Size:"}{" "}
+                                        {(pC?.categoryName ===
+                                          "Home Appliances" &&
+                                          (pC?.subCategory === "Fridge" ||
+                                            pC?.subCategory === "Gas Stove" ||
+                                            pC?.subCategory === "Microwave" ||
+                                            pC?.subCategory === "Toaster")) ||
+                                        pC.categoryName === "Women's Bags" ||
+                                        (pC?.categoryName === "Electronics" &&
+                                          (pC?.subCategory === "Mouse" ||
+                                            pC?.subCategory === "Keyboard"))
+                                          ? ` ${pC.width}W * ${pC.height}${
+                                              pC?.categoryName ===
+                                                "Electronics" &&
+                                              (pC?.subCategory === "Mouse" ||
+                                                pC?.subCategory === "Keyboard")
+                                                ? "L"
+                                                : "H"
+                                            }`
+                                          : String(pC.size)}{" "}
                                       </h4>
                                       <h3 className="flex flex-wrap items-center gap-1 mt-1">
                                         Color:{" "}
@@ -628,7 +686,8 @@ export default function Checkout() {
                                           }}
                                           title={pC.color}
                                           aria-label={pC.color}
-                                          className="w-5 h-5 rounded-full border"></div>
+                                          className="w-5 h-5 rounded-full b
+                                          order"></div>
                                       </h3>{" "}
                                     </div>
                                   </div>
