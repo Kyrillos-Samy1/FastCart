@@ -160,9 +160,8 @@ export default function Checkout() {
     })
   });
 
-  const capitalize = (str: string) => str && str.length > 0
-  ? str[0].toUpperCase() + str.substring(1)
-  : str;
+  const capitalize = (str: string) =>
+    str && str.length > 0 ? str[0].toUpperCase() + str.substring(1) : str;
 
   const stripePromise = loadStripe(
     "pk_test_51RRI0C4PwXfdxZqq4PuhxLNlJmb8Rd78Ew3MO5BfGmJRIT94iOOxrJqJPBGoEvkkDAqZb5v8rizkqn8EwIb1P5QM00cP3YL1yA"
@@ -338,8 +337,8 @@ export default function Checkout() {
                 <strong>Total:</strong> ${total_Price.toFixed(2)}
               </p>
               <p>
-                <strong>Card:</strong> {capitalize(cardInfo.cardType)} (**** **** ****{" "}
-                {cardInfo.cartLast4Digits})
+                <strong>Card:</strong> {capitalize(cardInfo.cardType)} (****
+                **** **** {cardInfo.cartLast4Digits})
               </p>
             </div>
 
