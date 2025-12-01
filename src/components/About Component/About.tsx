@@ -208,7 +208,7 @@ export default function About() {
         </section>
 
         {/* Our Locations Section */}
-        <section className="locations py-10 sm:-mx-10 xs:-mx-5 tracking-wider sm:px-20 bg-white overflow-hidden">
+        <section className="locations py-10 sm:-mx-10 xs:-mx-5 tracking-wider sm:px-10 bg-white overflow-hidden">
           {/* Title Part. */}
           <motion.h2
             className="shadow-lg mb-5 sm:-mx-10 text-[#124030] text-3xl w-fit border-b-[3px] border-[var(--primary-color)] rounded-md p-1 pb-0 xs:mx-5 md:mx-0"
@@ -237,7 +237,7 @@ export default function About() {
               <motion.button
                 type="button"
                 title="Previous"
-                className="absolute md:-left-14 sm:-left-5 xs:left-0 xs:top-[45%] z-10"
+                className="absolute md:-left-10 sm:-left-5 xs:left-0 xs:top-[45%] z-10"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -314,7 +314,7 @@ export default function About() {
                 transition={{ duration: 1, delay: 0.3 }}
                 type="button"
                 title="Next"
-                className="absolute md:-right-14 sm:-right-5 xs:right-0 xs:top-[45%] z-10">
+                className="absolute md:-right-10 sm:-right-5 xs:right-0 xs:top-[45%] z-10">
                 <Button
                   type="button"
                   titleHovering="Next"
