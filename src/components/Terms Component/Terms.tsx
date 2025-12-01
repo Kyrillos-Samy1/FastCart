@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Terms_Of_Service_Data } from "../../Data/Terms_Data";
 
@@ -18,7 +18,7 @@ const containerVariants = {
     transition: {
       staggerChildren: 0.15,
       when: "beforeChildren",
-      ease: "easeOut",
+      ease: easeOut,
       duration: 0.6
     }
   }
@@ -29,7 +29,7 @@ const sectionVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
+    transition: { duration: 0.5, ease: easeOut }
   }
 };
 

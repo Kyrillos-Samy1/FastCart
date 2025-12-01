@@ -46,7 +46,7 @@ import {
   addProductToFavorite,
   removeProductFromFavorite
 } from "../../Redux/wishlistSlice";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 export default function Product_Details() {
   const [isDescShowen, setIsDescShowen] = useState<boolean>(false);
@@ -308,7 +308,7 @@ export default function Product_Details() {
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: easeOut }}
                 exit={{ opacity: 0, x: -50 }}>
                 <h2 className="lg:text-4xl text-start md:text-3xl xs:text-[22px] font-bold text-[#124030]">
                   {titleProductDetails.title}
@@ -323,14 +323,14 @@ export default function Product_Details() {
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                  transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
                   exit={{ opacity: 0, x: -50 }}>
                   {/* Previous Button. */}
                   <motion.div
                     className="absolute md:top-[45%] xs:top-[45%] xl:-left-3 md:left-1 xs:-left-3 z-10"
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+                    transition={{ duration: 1, ease: easeOut, delay: 0.6 }}
                     viewport={{ once: true }}
                     onClick={() => {
                       videoRef.current?.pause();
@@ -470,7 +470,7 @@ export default function Product_Details() {
                     className="absolute xl:-right-3 md:right-1 xs:-right-3 top-[45%] z-10"
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+                    transition={{ duration: 0.8, ease: easeOut, delay: 0.8 }}
                     viewport={{ once: true }}
                     onClick={() => {
                       videoRef.current?.pause();
@@ -500,7 +500,7 @@ export default function Product_Details() {
                           viewport={{ once: true }}
                           transition={{
                             duration: 0.8,
-                            ease: "easeOut",
+                            ease: easeOut,
                             delay: 0.5
                           }}>
                           {product.name}
@@ -514,7 +514,7 @@ export default function Product_Details() {
                           viewport={{ once: true }}
                           transition={{
                             duration: 0.8,
-                            ease: "easeOut",
+                            ease: easeOut,
                             delay: 0.6
                           }}>
                           {product?.category}{" "}
@@ -536,7 +536,7 @@ export default function Product_Details() {
                           viewport={{ once: true }}
                           transition={{
                             duration: 0.8,
-                            ease: "easeOut",
+                            ease: easeOut,
                             delay: 0.7
                           }}>
                           <p className="text-4xl font-bold">
@@ -564,7 +564,7 @@ export default function Product_Details() {
                           viewport={{ once: true }}
                           transition={{
                             duration: 0.8,
-                            ease: "easeOut",
+                            ease: easeOut,
                             delay: 0.8
                           }}>
                           <h2 className="text-lg text-gray-800 font-bold">
@@ -613,7 +613,7 @@ export default function Product_Details() {
                         viewport={{ once: true }}
                         transition={{
                           duration: 0.8,
-                          ease: "easeOut",
+                          ease: easeOut,
                           delay: 0.9
                         }}
                       />
@@ -626,7 +626,7 @@ export default function Product_Details() {
                         viewport={{ once: true }}
                         transition={{
                           duration: 0.8,
-                          ease: "easeOut",
+                          ease: easeOut,
                           delay: 1
                         }}>
                         <h2 className="text-lg font-bold text-gray-700">
@@ -730,7 +730,7 @@ export default function Product_Details() {
                         viewport={{ once: true }}
                         transition={{
                           duration: 0.8,
-                          ease: "easeOut",
+                          ease: easeOut,
                           delay: 1.1
                         }}>
                         <h6 className="text-lg font-bold text-gray-700 mb-1">
@@ -957,7 +957,7 @@ export default function Product_Details() {
                               viewport={{ once: true }}
                               transition={{
                                 duration: 0.8,
-                                ease: "easeOut",
+                                ease: easeOut,
                                 delay: 1.2
                               }}>
                               <h2>
@@ -1111,7 +1111,7 @@ export default function Product_Details() {
                               viewport={{ once: true }}
                               transition={{
                                 duration: 0.8,
-                                ease: "easeOut",
+                                ease: easeOut,
                                 delay: 1.2
                               }}>
                               <h2>
@@ -1414,7 +1414,7 @@ export default function Product_Details() {
                         viewport={{ once: true }}
                         transition={{
                           duration: 0.8,
-                          ease: "easeOut",
+                          ease: easeOut,
                           delay: 1.2
                         }}>
                         <h2 className="text-lg font-bold text-gray-700 mb-1">
@@ -1471,7 +1471,7 @@ export default function Product_Details() {
                         viewport={{ once: true }}
                         transition={{
                           duration: 0.8,
-                          ease: "easeOut",
+                          ease: easeOut,
                           delay: 1.29
                         }}
                       />
@@ -1493,7 +1493,7 @@ export default function Product_Details() {
                           viewport={{ once: true }}
                           transition={{
                             duration: 0.8,
-                            ease: "easeOut",
+                            ease: easeOut,
                             delay: 1.3
                           }}>
                           <Button
@@ -1511,7 +1511,7 @@ export default function Product_Details() {
                           viewport={{ once: true }}
                           transition={{
                             duration: 0.8,
-                            ease: "easeOut",
+                            ease: easeOut,
                             delay: 1.4
                           }}
                           onClick={() => {
@@ -1584,7 +1584,7 @@ export default function Product_Details() {
                 viewport={{ once: true }}
                 transition={{
                   duration: 0.8,
-                  ease: "easeOut",
+                  ease: easeOut,
                   delay: 0.5
                 }}></motion.div>
             </section>
@@ -1598,7 +1598,7 @@ export default function Product_Details() {
                     className="inline-block"
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                    transition={{ duration: 0.8, ease: easeOut, delay: 0.3 }}
                     viewport={{ once: true }}>
                     <h2 className="lg:text-4xl text-start md:text-3xl xs:text-[22px] font-bold text-[#124030]">
                       Related Products
@@ -1610,7 +1610,7 @@ export default function Product_Details() {
                     className="z-[15]"
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                    transition={{ duration: 0.8, ease: easeOut, delay: 0.3 }}
                     viewport={{ once: true }}>
                     <Link
                       to={`/categories/${
@@ -1638,7 +1638,7 @@ export default function Product_Details() {
                     className="absolute md:left-1 xs:left-0  md:top-[40%] xs:top-[50%] z-10"
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                    transition={{ duration: 0.8, ease: easeOut, delay: 0.3 }}
                     viewport={{ once: true }}>
                     <Button
                       type="button"
@@ -1692,7 +1692,7 @@ export default function Product_Details() {
                     className="absolute md:right-1 sm:right-0 xs:-right-0 md:top-[40%] xs:top-[50%] z-10"
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                    transition={{ duration: 0.8, ease: easeOut, delay: 0.3 }}
                     viewport={{ once: true }}>
                     <Button
                       type="button"

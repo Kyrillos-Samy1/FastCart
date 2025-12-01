@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeInOut, easeOut } from "framer-motion";
 import Button from "../ui/Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Hamburger_Button_Menu from "./HamburgerButton & Menu";
@@ -91,7 +91,7 @@ export default function Navbar() {
       scale: 0.98,
       transition: {
         duration: 0.35,
-        ease: [0.4, 0, 0.2, 1]
+        ease: easeInOut
       }
     },
     visible: {
@@ -100,7 +100,7 @@ export default function Navbar() {
       scale: 1,
       transition: {
         duration: 0.45,
-        ease: [0.4, 0, 0.2, 1]
+        ease: easeInOut
       }
     }
   };
@@ -124,7 +124,7 @@ export default function Navbar() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8, ease: easeOut }
     }
   };
 
@@ -194,7 +194,7 @@ export default function Navbar() {
                 transition={{
                   duration: 1.2,
                   y: { duration: 2, delay: 0.5 },
-                  ease: "easeInOut"
+                  ease: easeInOut
                 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 viewport={{ once: true }}>

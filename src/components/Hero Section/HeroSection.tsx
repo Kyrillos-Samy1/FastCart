@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import { scrollToTop } from "../ui/utils";
 import { HeroSectionData } from "../../Data/HeroSection_Data";
-import { motion } from "framer-motion";
+import { motion, easeOut, easeInOut } from "framer-motion";
 
 export default function HeroSection() {
   //! Variants for staggering the content
@@ -17,7 +17,7 @@ export default function HeroSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut } }
   };
 
   return (
@@ -32,7 +32,7 @@ export default function HeroSection() {
               opacity: [0.9, 1, 0.9],
               y: [0, -10, 0]
             }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 5, repeat: Infinity, ease: easeInOut }}
           />
           <motion.div
             className="pointer-events-none absolute blur-sm w-96 h-96 rounded-full bg-gradient-to-br from-emerald-400/10 to-emerald-400/5 -top-5 bottom-26 -left-28"
@@ -41,7 +41,7 @@ export default function HeroSection() {
               opacity: [0.8, 1, 0.8],
               x: [0, 20, 0]
             }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 6, repeat: Infinity, ease: easeInOut }}
           />
           <motion.div
             className="pointer-events-none absolute blur-sm w-60 h-60 rounded-full bg-gradient-to-tl from-emerald-400/10 to-emerald-400/5 bottom-0 left-10"
@@ -50,7 +50,7 @@ export default function HeroSection() {
               opacity: [1, 0.8, 1],
               y: [0, 15, 0]
             }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 4, repeat: Infinity, ease: easeInOut }}
           />
 
           {/* Animated Content */}

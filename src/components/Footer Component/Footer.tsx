@@ -9,7 +9,7 @@ import { scrollToTop, toastSuccess } from "../ui/utils";
 import { AppDispatch, RootState } from "../../Redux/reduxStore";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsFooter, setIsNavbar } from "../../Redux/footerSlice";
-import { motion } from "framer-motion";
+import { motion, easeInOut, easeOut } from "framer-motion";
 
 export default function Footer() {
   const location = useLocation();
@@ -37,7 +37,7 @@ export default function Footer() {
         transition={{
           duration: 4,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: easeInOut
         }}
         className="pointer-events-none absolute blur-sm w-32 h-32 rounded-full bg-emerald-400/5 -bottom-10 left-0"
       />
@@ -50,7 +50,7 @@ export default function Footer() {
         transition={{
           duration: 5,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: easeInOut
         }}
         className="pointer-events-none absolute blur-sm w-96 h-96 rounded-full bg-emerald-400/5 -top-5 bottom-26 -right-28"
       />
@@ -63,7 +63,7 @@ export default function Footer() {
         transition={{
           duration: 6,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: easeInOut
         }}
         className="pointer-events-none absolute blur-sm w-60 h-60 rounded-full bg-emerald-400/5 md:bottom-44 md:left-0 xs:right-0 xs:bottom-80"
       />
@@ -88,7 +88,7 @@ export default function Footer() {
             transition={{
               duration: 1.2,
               y: { duration: 2, delay: 0.5 },
-              ease: "easeInOut"
+              ease: easeInOut
             }}
             whileHover={{ scale: 1.1, rotate: 5 }}
             viewport={{ once: true }}>
@@ -283,7 +283,7 @@ export default function Footer() {
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+        transition={{ duration: 0.8, ease: easeOut, delay: 0.3 }}
         className="text-white text-center md:text-lg xs:text-sm pt-10">
         &copy; <span className="text-[var(--primary-color)]">FastCart</span> |
         Powered by{" "}

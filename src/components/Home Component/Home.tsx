@@ -18,7 +18,7 @@ import { locations } from "../../Data/Home_Data.tsx";
 import { titleLocation } from "../../Data/Home_Data.tsx";
 import { usesFastCart } from "../../Data/Home_Data.tsx";
 import { titleUsesFastCart } from "../../Data/Home_Data.tsx";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 export default function Home() {
   //! For Home Section.
@@ -36,7 +36,7 @@ export default function Home() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 1, ease: "easeOut" }
+      transition: { duration: 1, ease: easeOut }
     }
   };
 
@@ -130,7 +130,7 @@ export default function Home() {
                 alt="Laptop FastCart"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
                 viewport={{ once: true }}
               />
 
@@ -144,8 +144,8 @@ export default function Home() {
                 transition={{
                   delay: 1,
                   duration: 2,
-                  opacity: { duration: 1, ease: "easeOut", delay: 1 },
-                  ease: "easeOut"
+                  opacity: { duration: 1, ease: easeOut, delay: 1 },
+                  ease: easeOut
                 }}
                 viewport={{ once: true }}
               />
@@ -195,7 +195,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
               viewport={{ once: true }}>
               <h2 className="lg:text-4xl text-start md:text-3xl xs:text-2xl font-bold text-[#124030]">
                 {titleTopProduct.title}
@@ -206,7 +206,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
               viewport={{ once: true }}>
               <Link
                 to={titleTopProduct.link_button}
@@ -231,7 +231,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
               viewport={{ once: true }}
               className="swiper-topProducts-prev absolute md:left-1 xs:left-0 xs:top-[47%] z-10">
               <Button
@@ -281,7 +281,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
               viewport={{ once: true }}
               className="swiper-topProducts-next absolute md:right-0 xs:right-0 xs:top-[47%] z-10">
               <Button
@@ -308,7 +308,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
               viewport={{ once: true }}>
               <h2 className="lg:text-4xl text-start md:text-3xl xs:text-2xl font-bold text-[#124030]">
                 {titleTopCategories.title}
@@ -319,7 +319,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
               viewport={{ once: true }}>
               <Link
                 to={titleTopCategories.link_button}
@@ -344,7 +344,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
               viewport={{ once: true }}
               className="absolute md:left-1 xs:left-0 xs:top-[45%]">
               <Button
@@ -394,7 +394,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
               viewport={{ once: true }}
               className="absolute md:right-0 xs:right-0 xs:top-[45%]">
               <Button
@@ -420,7 +420,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+            transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
             viewport={{ once: true }}
             className="inline-block mb-5 xs:px-5 md:px-0">
             <h2 className="lg:text-4xl text-start md:text-3xl xs:text-2xl font-bold text-[#124030]">
@@ -441,7 +441,7 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
                 viewport={{ once: true }}
                 className="absolute md:left-1 xs:left-0 xs:top-[45%] z-10">
                 <Button
@@ -511,7 +511,7 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
                 viewport={{ once: true }}
                 className="absolute md:-right-1 xs:right-0 xs:top-[45%] z-10">
                 <Button
@@ -534,7 +534,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+          transition={{ duration: 1, ease: easeOut, delay: 0.5 }}
           viewport={{ once: true }}
           className="inline-block mb-10">
           <h2 className="lg:text-4xl text-start md:text-3xl xs:text-2xl font-bold text-[#124030]">
@@ -553,7 +553,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.7,
-                ease: "easeOut",
+                ease: easeOut,
                 delay: index * 0.2
               }}
               viewport={{ once: true }}>

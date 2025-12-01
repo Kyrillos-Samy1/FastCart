@@ -1,6 +1,6 @@
 import Loading from "../Loading Component/Loading";
 import { titleOurProducts } from "../../Data/AllProducts_Data";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 import { useState, useEffect, useMemo } from "react";
 import Button from "../ui/Button";
@@ -81,7 +81,7 @@ export default function SearchResults() {
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1, ease: "easeOut" }}>
+                  transition={{ duration: 1, ease: easeOut }}>
                   <h2 className="lg:text-4xl text-start md:text-3xl xs:text-2xl font-bold text-[#124030]">
                     {titleOurProducts.title}
                   </h2>
@@ -94,7 +94,7 @@ export default function SearchResults() {
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1, ease: "easeOut" }}>
+                  transition={{ duration: 1, ease: easeOut }}>
                   <label
                     htmlFor="sortPrice"
                     className="font-semibold text-gray-700 whitespace-nowrap md:text-xl xs:text-lg text-start">
@@ -128,7 +128,7 @@ export default function SearchResults() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}>
+                transition={{ duration: 1, ease: easeOut, delay: 0.5 }}>
                 {products.map((product) => (
                   <div
                     key={product.id}
@@ -146,7 +146,7 @@ export default function SearchResults() {
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1, ease: "easeOut" }}>
+                  transition={{ duration: 1, ease: easeOut }}>
                   <Button
                     type="button"
                     titleHovering={isLoading ? "Loading" : "Load More"}
@@ -162,7 +162,7 @@ export default function SearchResults() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}>
+                transition={{ duration: 1, ease: easeOut, delay: 0.5 }}>
                 <p className="text-lg text-center text-gray-700">{`You have viewed ${
                   visibleCards >= searchResults.length
                     ? searchResults.length

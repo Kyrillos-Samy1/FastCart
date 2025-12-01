@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../ui/Button";
-import { motion } from "framer-motion";
+import { motion, easeInOut } from "framer-motion";
 import { IoIosEyeOff } from "react-icons/io";
 import { IoMdEye } from "react-icons/io";
 import { useEffect, useState } from "react";
@@ -117,7 +117,7 @@ export default function Signup() {
               opacity: [0.9, 1, 0.9],
               y: [0, -10, 0]
             }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 5, repeat: Infinity, ease: easeInOut }}
           />
           <motion.div
             className="pointer-events-none fixed blur-sm w-96 h-96 rounded-full bg-gradient-to-br from-emerald-800/30 to-emerald-800/30 -top-5 bottom-26 -left-28"
@@ -126,7 +126,7 @@ export default function Signup() {
               opacity: [0.8, 1, 0.8],
               x: [0, 20, 0]
             }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 6, repeat: Infinity, ease: easeInOut }}
           />
 
           {/* Form Part. */}

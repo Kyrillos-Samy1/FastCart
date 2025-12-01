@@ -6,7 +6,7 @@ import { useState } from "react";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import { Link, useParams } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../Redux/reduxStore";
 import NotFound from "../NotFound Component/NotFound";
@@ -314,7 +314,7 @@ export default function Checkout() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: easeOut }}
             className="relative z-10 bg-white/80 backdrop-blur-2xl border border-gray-200 shadow-2xl rounded-3xl p-10 w-full max-w-md">
             {/* Header */}
             <div className="flex items-center justify-center gap-2 mb-6">

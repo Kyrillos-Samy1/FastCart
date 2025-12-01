@@ -3,7 +3,7 @@ import { scrollToTop } from "../ui/utils";
 import { categories, titleCategories } from "../../Data/Category_Data";
 import Button from "../ui/Button";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 export default function Categories() {
   const [visibleCards, setVisibleCards] = useState(4);
@@ -31,7 +31,7 @@ export default function Categories() {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeOut" }}>
+          transition={{ duration: 1, ease: easeOut }}>
           <h2 className="lg:text-4xl text-start md:text-3xl xs:text-2xl font-bold text-[#124030]">
             {titleCategories.title}
           </h2>
@@ -44,7 +44,7 @@ export default function Categories() {
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeOut" }}>
+          transition={{ duration: 1, ease: easeOut }}>
           {visibleCategories?.map((category, index) => (
             <div key={index}>
               <div className="relative overflow-hidden rounded-3xl shadow-location hover:shadow-lg hover:scale-105 group/text transition-all duration-500 ease-in-out cursor-pointer">
@@ -78,7 +78,7 @@ export default function Categories() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}>
+            transition={{ duration: 1, ease: easeOut }}>
             <Button
               type="button"
               titleHovering="Load More"
@@ -94,7 +94,7 @@ export default function Categories() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}>
+          transition={{ duration: 1, ease: easeOut, delay: 0.5 }}>
           <p className="text-lg text-center text-gray-700">{`You have viewed ${
             visibleCards >= categories.length ? categories.length : visibleCards
           } out of ${categories.length} products.`}</p>
