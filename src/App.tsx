@@ -1,27 +1,43 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import "./App.css";
-import AllProducts from "./components/Product Component/AllProducts";
-import NotFound from "./components/NotFound Component/NotFound";
-import Layout from "./components/Layout Component/Layout";
-import ContactUs from "./components/Contact Us Component/Contact_Us";
-import About from "./components/About Component/About";
-import Home from "./components/Home Component/Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Categories from "./components/Categories Component/Categories";
-import CategoryFiltration from "./components/CategoryFiltration/CategoryFiltration";
-import Product_Details from "./components/Product Details Component/Product Details";
-import Cart from "./components/Cart Component/Cart";
 import { reduxStore } from "./Redux/reduxStore";
 import { Provider } from "react-redux";
-import Wishlist from "./components/Wishlist Component/Wishlist";
-import Checkout from "./components/Checkout Component/Checkout";
-import Login from "./components/Login Component/Login";
-import Signup from "./components/Signup Component/Signup";
 import Guard from "./components/Guards/Guard";
-import Terms from "./components/Terms Component/Terms";
-import Privacy from "./components/Privacy Component/Privacy";
-import SearchResults from "./components/Search Component/Search";
+import Loading from "./components/Loading Component/Loading";
+
+//! Lazy imports
+const AllProducts = lazy(
+  () => import("./components/Product Component/AllProducts")
+);
+const NotFound = lazy(() => import("./components/NotFound Component/NotFound"));
+const Layout = lazy(() => import("./components/Layout Component/Layout"));
+const ContactUs = lazy(
+  () => import("./components/Contact Us Component/Contact_Us")
+);
+const About = lazy(() => import("./components/About Component/About"));
+const Home = lazy(() => import("./components/Home Component/Home"));
+const Categories = lazy(
+  () => import("./components/Categories Component/Categories")
+);
+const CategoryFiltration = lazy(
+  () => import("./components/CategoryFiltration/CategoryFiltration")
+);
+const Product_Details = lazy(
+  () => import("./components/Product Details Component/Product Details")
+);
+const Cart = lazy(() => import("./components/Cart Component/Cart"));
+const Wishlist = lazy(() => import("./components/Wishlist Component/Wishlist"));
+const Checkout = lazy(() => import("./components/Checkout Component/Checkout"));
+const Login = lazy(() => import("./components/Login Component/Login"));
+const Signup = lazy(() => import("./components/Signup Component/Signup"));
+const Terms = lazy(() => import("./components/Terms Component/Terms"));
+const Privacy = lazy(() => import("./components/Privacy Component/Privacy"));
+const SearchResults = lazy(
+  () => import("./components/Search Component/Search")
+);
 
 function App() {
   const date = new Date();
@@ -42,7 +58,6 @@ function App() {
     "December"
   ];
   const monthName = monthNames[date.getMonth()];
-
   const formattedDate = `${monthName} ${day}, ${year}`;
 
   const route = createBrowserRouter([
@@ -52,14 +67,6 @@ function App() {
       children: [
         {
           index: true,
-          element: (
-            <Guard>
-              <Home />
-            </Guard>
-          )
-        },
-        {
-          path: "/",
           element: (
             <Guard>
               <Home />
@@ -182,10 +189,13 @@ function App() {
       element: <Signup />
     }
   ]);
+
   return (
     <>
       <Provider store={reduxStore}>
-        <RouterProvider router={route}></RouterProvider>
+        <Suspense fallback={<Loading />}>
+          <RouterProvider router={route} />
+        </Suspense>
 
         <ToastContainer position="top-right" />
       </Provider>
