@@ -705,11 +705,12 @@ export default function Checkout() {
                                   type="button"
                                   title="Back"
                                   onClick={() => {
-                                    setActiveProcessing(0);
                                     if (isPaid) {
                                       setShowSecondForm(true);
+                                      setActiveProcessing(1);
                                     } else {
                                       setShowSecondForm(false);
+                                      setActiveProcessing(0);
                                     }
                                     scrollToTop();
                                   }}>
