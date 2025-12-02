@@ -18,7 +18,7 @@
     "@stripe/react-stripe-js": "^3.6.0",
     "@stripe/stripe-js": "^7.0.0",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
+    "express": "^5.2.0",
     "formik": "^2.4.6",
     "framer-motion": "^12.9.4",
     "jspdf": "^3.0.1",
